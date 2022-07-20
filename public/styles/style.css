@@ -9,7 +9,7 @@
 }
 
 body {
-    background-color: #FB6B6B;
+    background-color: var(--background);
     font-family: 'Recursive', sans-serif;
 
     display: flex;
@@ -24,16 +24,20 @@ body {
 .nameGame {
     margin: 50px 0px;
     font-family: 'Righteous', cursive;
+    color: var(--white);
+    font-size: 36px;
+    font-weight: 400;
 }
 
 .button {
     width: 246px;
     height: 54px;
-    background-color: #FFFFFF;
+    background-color: var(--white);
 
     border-radius: 5px;
-    border: #D70900 1px solid;
-    color: #D70900;
+    border: var(--red) 1px solid;
+    color: var(--red);
+    font-size: 21.6px;
 
     display: flex;
     justify-content: center;
