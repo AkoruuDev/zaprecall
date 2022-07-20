@@ -1,16 +1,15 @@
 import Welcome from "./Welcome";
-import Top from "./Top";
-import Content from "./Content";
-import Bottom from "./Bottom";
+import Game from "./Game";
+
+let pageOn = <Welcome />
+
+function pageOnActive() {
+    pageOn = <Game /> 
+}
 
 function App() {
     return(
-        <>
-            <Welcome />
-            <Top />
-            <Content />
-            <Bottom />
-        </>
+        pageOn
     );
 }
 
