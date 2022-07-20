@@ -1,15 +1,16 @@
+import React from 'react';
 import Welcome from "./Welcome";
 import Game from "./Game";
 
-let pageOn = <Welcome />
-
-function pageOnActive() {
-    pageOn = <Game /> 
-}
-
 function App() {
+    const [PageOn, setPageOn] = React.useState(<Welcome />)
+
+    function pageOnActive() {
+        setPageOn(<Game />);
+    }
+    
     return(
-        pageOn
+        PageOn
     );
 }
 
