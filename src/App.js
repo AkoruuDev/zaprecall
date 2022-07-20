@@ -1,5 +1,17 @@
+import Welcome from "./Welcome";
+import Top from "./Top";
+import Content from "./Content";
+import Bottom from "./Bottom";
+
 function App() {
-    return(<h1>Hello Everyone!</h1>);
+    return(
+        <>
+            <Welcome />
+            <Top />
+            <Content />
+            <Bottom />
+        </>
+    );
 }
 
 export default App;
