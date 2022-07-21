@@ -1,6 +1,18 @@
+import React from "react";
+
 function Bottom() {
+    let AllQuestions = 4;
+
+    const [Answered, setAnswered] = React.useState(0);
+
+    function answerMoreOne() {
+        setAnswered(Answered + 1)
+    }
+    
     return(
-        <p>This is the Bottom part page</p>
+        <div className="bottom">
+            <p>{Answered}/{AllQuestions} CONCLUÍDOS</p>
+        </div>
     )
 }
 

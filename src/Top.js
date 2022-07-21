@@ -1,6 +1,9 @@
 function Top() {
     return(
-        <p>This is the Top part page</p>
+        <div className="top">
+            <img src="./docs/ZapRecall-Recursos/logo.png" alt="logo" className="logo" />
+            <h1>ZapRecall</h1>
+        </div>
     )
 }
 
