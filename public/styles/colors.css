@@ -1,6 +1,9 @@
 :root { /*   Color pallet   */
     --background: #FB6B6B;
     --white: #FFFFFF;
+    --black: #333333;
     --red: #D70900;
+    --yellow: #FF922E;
+    --green: #2FBE34;
     --shadow: 0 1px 10px 1px black;
 }
