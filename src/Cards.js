@@ -55,9 +55,9 @@ function Cards() {
                     <div className="askAnswere">
                         <p>{ask.answere}</p>
                         <div className="boxButton">
-                        <div className="answereButton red" onClick={() => toAnswere("not")}>Não lembrei</div>
-                        <div className="answereButton yellow" onClick={() => toAnswere("almost")}>Quase não lembrei</div>
-                        <div className="answereButton green" onClick={() => toAnswere("zap")}>Zap</div>
+                            <div className="answereButton red" onClick={() => toAnswere("not")}>Não lembrei</div>
+                            <div className="answereButton yellow" onClick={() => toAnswere("almost")}>Quase não lembrei</div>
+                            <div className="answereButton green" onClick={() => toAnswere("zap")}>Zap</div>
                         </div>
                     </div>
                 </div>

@@ -1,4 +1,4 @@
-.button:hover {
+.button:hover, .answereButton:hover {
     cursor: pointer;
     box-shadow: var(--shadow);
 }
