@@ -1,3 +1,5 @@
+import React from "react";
+
 const deck = [
     {question: "O que é JSX?", answere: "Uma extensão de linguagem do JavaScript"},
     {question: "O React é __", answere: "uma biblioteca JavaScript para construção de interfaces"},
@@ -10,13 +12,37 @@ const deck = [
 ]
 
 function Cards() {
+    const [icon, setIcon] = React.useState("play-outline");
+
+    let cardAnswered = "";
+
+    function toAnswere(ans) {
+        cardAnswered = ans;
+        console.log(cardAnswered);
+        backHomeCard();
+    }
+
+    function backHomeCard() {
+        changeIcon();
+    }
+
+    function changeIcon() {
+        if(cardAnswered === "not") {
+            setIcon("close-circle");
+        } else if (cardAnswered === "almost") {
+            setIcon("help-circle");
+        } else if (cardAnswered === "zap") {
+            setIcon("checkmark-circle")
+        }
+    }
+
     return(
         <div className="content">
             {deck.map((ask, i) => (
-                <div className="cardContent">
+                <div className="cardContent" key={i+1}>
                     <div className="askNumber">
                         <p>Pergunta {i+1}</p>
-                        <ion-icon name="play-outline"></ion-icon>
+                        <ion-icon name={icon}></ion-icon>
                     </div>
                     <div className="askContent">
                         <p>{ask.question}</p>
@@ -25,9 +51,9 @@ function Cards() {
                     <div className="askAnswere">
                         <p>{ask.answere}</p>
                         <div className="boxButton">
-                        <div className="answereButton red">Não lembrei</div>
-                        <div className="answereButton yellow">Quase não lembrei</div>
-                        <div className="answereButton green">Zap</div>
+                        <div className="answereButton red" onClick={() => toAnswere("not")}>Não lembrei</div>
+                        <div className="answereButton yellow" onClick={() => toAnswere("almost")}>Quase não lembrei</div>
+                        <div className="answereButton green" onClick={() => toAnswere("zap")}>Zap</div>
                         </div>
                     </div>
                 </div>
