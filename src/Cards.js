@@ -13,6 +13,7 @@ const deck = [
 
 function Cards() {
     const [icon, setIcon] = React.useState("play-outline");
+    const [color, setColor] = React.useState("");
 
     let cardAnswered = "";
 
@@ -29,10 +30,13 @@ function Cards() {
     function changeIcon() {
         if(cardAnswered === "not") {
             setIcon("close-circle");
+            setColor("red-text");
         } else if (cardAnswered === "almost") {
             setIcon("help-circle");
+            setColor("yellow-text");
         } else if (cardAnswered === "zap") {
-            setIcon("checkmark-circle")
+            setIcon("checkmark-circle");
+            setColor("green-text");
         }
     }
 
@@ -41,8 +45,8 @@ function Cards() {
             {deck.map((ask, i) => (
                 <div className="cardContent" key={i+1}>
                     <div className="askNumber">
-                        <p>Pergunta {i+1}</p>
-                        <ion-icon name={icon}></ion-icon>
+                        <p className={color}>Pergunta {i+1}</p>
+                        <span className={color}><ion-icon name={icon}></ion-icon></span>
                     </div>
                     <div className="askContent">
                         <p>{ask.question}</p>
