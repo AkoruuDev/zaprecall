@@ -1,66 +1,131 @@
 import React from "react";
 
 const deck = [
-    {question: "O que é JSX?", answere: "Uma extensão de linguagem do JavaScript"},
-    {question: "O React é __", answere: "uma biblioteca JavaScript para construção de interfaces"},
-    {question: "Componentes devem iniciar com __", answere: "letra maiúscula"},
-    {question: "Podemos colocar __ dentro do JSX", answere: "expressões"},
-    {question: "O ReactDOM nos ajuda __", answere: "interagindo com a DOM para colocar componentes React na mesma"},
-    {question: "Usamos o npm para __", answere: "gerenciar os pacotes necessários e suas dependências"},
-    {question: "Usamos props para __", answere: "passar diferentes informações para componentes "},
-    {question: "Usamos estado (state) para __", answere: "dizer para o React quais informações quando atualizadas devem renderizar a tela novamente"}
+    {
+        question: "O que é JSX?",
+        answere: "Uma extensão de linguagem do JavaScript",
+        cardAnswered: false
+    },
+    {
+        question: "O React é __",
+        answere: "uma biblioteca JavaScript para construção de interfaces",
+        cardAnswered: false
+    },
+    {
+        question: "Componentes devem iniciar com __",
+        answere: "letra maiúscula",
+        cardAnswered: false
+    },
+    {
+        question: "Podemos colocar __ dentro do JSX",
+        answere: "expressões",
+        cardAnswered: false
+    },
+    {
+        question: "O ReactDOM nos ajuda __",
+        answere: "interagindo com a DOM para colocar componentes React na mesma",
+        cardAnswered: false
+    },
+    {
+        question: "Usamos o npm para __",
+        answere: "gerenciar os pacotes necessários e suas dependências",
+        cardAnswered: false
+    },
+    {
+        question: "Usamos props para __",
+        answere: "passar diferentes informações para componentes ",
+        cardAnswered: false
+    },
+    {
+        question: "Usamos estado (state) para __",
+        answere: "dizer para o React quais informações quando atualizadas devem renderizar a tela novamente",
+        cardAnswered: false
+    }
 ]
 
-function Cards() {
-    const [icon, setIcon] = React.useState("play-outline");
-    const [color, setColor] = React.useState("");
+const geral = [];
 
-    let cardAnswered = "";
+for (let c = 0; c < 4; c++) {
+    geral.push(deck[c]);
+}
+
+let icon = "play-outline";
+let color = "";
+let typeCardAnswered = "";
+
+function Asks(props) {
+    console.log(props);
+
+    const [cardAnswered, setCardAnswered] = React.useState(props.answered);
+
 
     function toAnswere(ans) {
-        cardAnswered = ans;
-        console.log(cardAnswered);
-        backHomeCard();
+        typeCardAnswered = ans;
+        console.log(ans)
+        setCardAnswered(true);
     }
 
-    function backHomeCard() {
-        changeIcon();
-    }
-
-    function changeIcon() {
-        if(cardAnswered === "not") {
-            setIcon("close-circle");
-            setColor("red-text");
-        } else if (cardAnswered === "almost") {
-            setIcon("help-circle");
-            setColor("yellow-text");
-        } else if (cardAnswered === "zap") {
-            setIcon("checkmark-circle");
-            setColor("green-text");
+    function ifRed() {
+        let back = false;
+        if (typeCardAnswered === "not") {
+            back = true;
         }
+        return back;
     }
 
+    function ifYellow() {
+        let back = false;
+        if (typeCardAnswered === "not") {
+            back = true;
+        }
+        return back;
+    }
+
+    function ifGreen() {
+        let back = false;
+        if (typeCardAnswered === "not") {
+            back = true;
+        }
+        return back;
+    }
+
+    return (
+        <div className="cardContent">
+            <div className="askNumber">
+                <p>Pergunta {props.index}</p>
+                <span>{cardAnswered ? (
+                    ifRed ? <ion-icon name="close-circle"></ion-icon> : (
+                        ifYellow ? <ion-icon name="help-circle"></ion-icon> : (
+                            ifGreen ? <ion-icon name="checkmark-circle"></ion-icon> : ""
+                )   )   ) : <ion-icon name="play-outline"></ion-icon> }
+                </span>
+            </div>
+            <div className="askContent">
+                <p>{props.ask}</p>
+                <img src="./docs/ZapRecall-Recursos/setinha.png" alt="turn" className="turnIcon" />
+            </div>
+            <div className="askAnswere">
+                <p>{props.aska}</p>
+                <div className="boxButton">
+                    <div className="answereButton red" onClick={() => toAnswere("not")}>Não lembrei</div>
+                    <div className="answereButton yellow" onClick={() => toAnswere("almost")}>Quase não lembrei</div>
+                    <div className="answereButton green" onClick={() => toAnswere("zap")}>Zap</div>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+function Cards() {
     return(
         <div className="content">
-            {deck.map((ask, i) => (
-                <div className="cardContent" key={i+1}>
-                    <div className="askNumber">
-                        <p className={color}>Pergunta {i+1}</p>
-                        <span className={color}><ion-icon name={icon}></ion-icon></span>
-                    </div>
-                    <div className="askContent">
-                        <p>{ask.question}</p>
-                        <img src="./docs/ZapRecall-Recursos/setinha.png" alt="turn" className="turnIcon" />
-                    </div>
-                    <div className="askAnswere">
-                        <p>{ask.answere}</p>
-                        <div className="boxButton">
-                            <div className="answereButton red" onClick={() => toAnswere("not")}>Não lembrei</div>
-                            <div className="answereButton yellow" onClick={() => toAnswere("almost")}>Quase não lembrei</div>
-                            <div className="answereButton green" onClick={() => toAnswere("zap")}>Zap</div>
-                        </div>
-                    </div>
-                </div>
+            {deck.map((card, i) => (
+                <Asks
+                    index = {i + 1}
+                    ask = {card.question}
+                    aska = {card.answere}
+                    answered = {card.cardAnswered}
+                />
             ))}
         </div>
     )
