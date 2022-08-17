@@ -103,7 +103,6 @@ body {
     padding: 15px;
     background-color: var(--white);
     border-radius: 5px;
-    color: var(--black);
 }
 
 .askNumber {
@@ -174,31 +173,19 @@ ion-icon {
     background-color: var(--green);
 }
 
-.red-text {
+.not {
     color: var(--red);
     text-decoration: line-through;
 }
 
-.yellow-text {
+.almost {
     color: var(--yellow);
     text-decoration: line-through;
 }
 
-.green-text {
+.zap {
     color: var(--green);
     text-decoration: line-through;
-}
-
-ion-icon .red-text {
-    color: var(--red);
-}
-
-ion-icon .yellow-text {
-    color: var(--yellow);
-}
-
-ion-icon .green-text {
-    color: var(--green);
 }
 
 .bottom {

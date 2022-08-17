@@ -54,34 +54,10 @@ function Asks(props) {
         setResponse(false);
     }
 
-    function ifRed() {
-        let back = false;
-        if (typeCardAnswered === "not") {
-            back = true;
-        }
-        return back;
-    }
-
-    function ifYellow() {
-        let back = false;
-        if (typeCardAnswered === "not") {
-            back = true;
-        }
-        return back;
-    }
-
-    function ifGreen() {
-        let back = false;
-        if (typeCardAnswered === "not") {
-            back = true;
-        }
-        return back;
-    }
-
     return (
         <div className="cardContent">
             {!open ?
-                <div className="askNumber">
+                <div className={`askNumber ${typeCardAnswered}`}>
                     <p>Pergunta {props.index}</p>
                     <span>{cardAnswered ? (
                         typeCardAnswered === "not" ? <ion-icon name="close-circle"></ion-icon> : (
