@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 const deck = [
     {
@@ -54,6 +54,8 @@ let color = "";
 let typeCardAnswered = "";
 
 function Asks(props) {
+    const [open, setOpen] = useState(false);
+    const [response, setResponse] = useState(false);
     console.log(props);
 
     const [cardAnswered, setCardAnswered] = React.useState(props.answered);
@@ -91,27 +93,30 @@ function Asks(props) {
 
     return (
         <div className="cardContent">
-            <div className="askNumber">
-                <p>Pergunta {props.index}</p>
-                <span>{cardAnswered ? (
-                    ifRed ? <ion-icon name="close-circle"></ion-icon> : (
-                        ifYellow ? <ion-icon name="help-circle"></ion-icon> : (
-                            ifGreen ? <ion-icon name="checkmark-circle"></ion-icon> : ""
-                )   )   ) : <ion-icon name="play-outline"></ion-icon> }
-                </span>
-            </div>
-            <div className="askContent">
-                <p>{props.ask}</p>
-                <img src="./docs/ZapRecall-Recursos/setinha.png" alt="turn" className="turnIcon" />
-            </div>
-            <div className="askAnswere">
-                <p>{props.aska}</p>
-                <div className="boxButton">
-                    <div className="answereButton red" onClick={() => toAnswere("not")}>Não lembrei</div>
-                    <div className="answereButton yellow" onClick={() => toAnswere("almost")}>Quase não lembrei</div>
-                    <div className="answereButton green" onClick={() => toAnswere("zap")}>Zap</div>
+            {!open ?
+                <div className="askNumber" onClick={() => setOpen(true)}>
+                    <p>Pergunta {props.index}</p>
+                    <span>{cardAnswered ? (
+                        ifRed ? <ion-icon name="close-circle"></ion-icon> : (
+                            ifYellow ? <ion-icon name="help-circle"></ion-icon> : (
+                                ifGreen ? <ion-icon name="checkmark-circle"></ion-icon> : ""
+                    )   )   ) : <ion-icon name="play-outline"></ion-icon> }
+                    </span>
+                </div> :
+                !response ?
+                <div className="askContent">
+                    <p>{props.ask}</p>
+                    <img src="./docs/ZapRecall-Recursos/setinha.png" alt="turn" className="turnIcon" onClick={() => setResponse(true)}/>
+                </div> :
+                <div className="askAnswere">
+                    <p>{props.aska}</p>
+                    <div className="boxButton">
+                        <div className="answereButton red" onClick={() => toAnswere("not")}>Não lembrei</div>
+                        <div className="answereButton yellow" onClick={() => toAnswere("almost")}>Quase não lembrei</div>
+                        <div className="answereButton green" onClick={() => toAnswere("zap")}>Zap</div>
+                    </div>
                 </div>
-            </div>
+            }
         </div>
     )
 }
