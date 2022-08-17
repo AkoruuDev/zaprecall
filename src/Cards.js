@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Bottom from "./Bottom";
+import Top from "./Top";
 
 const deck = [
     {
@@ -123,16 +125,20 @@ function Asks(props) {
 
 function Cards() {
     return(
-        <div className="content">
-            {deck.map((card, i) => (
-                <Asks
-                    index = {i + 1}
-                    ask = {card.question}
-                    aska = {card.answere}
-                    answered = {card.cardAnswered}
-                />
-            ))}
-        </div>
+        <>
+            <Top />
+            <div className="content">
+                {deck.map((card, i) => (
+                    <Asks
+                        index = {i + 1}
+                        ask = {card.question}
+                        aska = {card.answere}
+                        answered = {card.cardAnswered}
+                    />
+                ))}
+            </div>
+            <Bottom />
+        </>
     )
 }
 
