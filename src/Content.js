@@ -1,8 +1,14 @@
+import Bottom from "./Bottom";
 import Cards from "./Cards";
+import Top from "./Top";
 
 function Content() {
     return(
-        <Cards />
+        <>
+            <Top />
+            <Cards />
+            <Bottom />
+        </>
     )
 }
 
