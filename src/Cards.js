@@ -85,6 +85,12 @@ function Asks(props) {
 }
 
 function Cards() {
+    deck.sort(comparador);
+
+    function comparador() { 
+        return Math.random() - 0.5; 
+    }
+
     return(
         <div className="content">
             {deck.map((card, i) => (
