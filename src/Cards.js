@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const deck = [
+const deckGeneral = [
     {
         question: "O que é JSX?",
         answere: "Uma extensão de linguagem do JavaScript"
@@ -34,12 +34,6 @@ const deck = [
         answere: "dizer para o React quais informações quando atualizadas devem renderizar a tela novamente"
     }
 ]
-
-const geral = [];
-
-for (let c = 0; c < 4; c++) {
-    geral.push(deck[c]);
-}
 
 function Asks(props) {
     const [open, setOpen] = useState(false);
@@ -86,15 +80,20 @@ function Asks(props) {
 }
 
 function Cards({ answerMoreOne, setAllQuestions }) {
-    deck.sort(comparador);
-
-    function comparador() { 
-        return Math.random() - 0.5; 
+    const deck = [];
+    
+    for (let c = 0; c < 4; c++) {
+        deck.push(deckGeneral[c]);
     }
 
-    useEffect(() => (
-        setAllQuestions(deck.length)
-    ), []);
+    useEffect(() => {
+        deck.sort(comparador);
+
+        function comparador() { 
+            return Math.random() - 0.5;
+        }
+        setAllQuestions(deck.length);
+    }, []);
 
     return(
         <div className="content">
