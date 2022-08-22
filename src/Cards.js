@@ -52,6 +52,7 @@ function Asks(props) {
         setTypeCardAnswered(ans);
         setOpen(false);
         setResponse(false);
+        props.answerMoreOne();
     }
 
     return (
@@ -84,17 +85,20 @@ function Asks(props) {
     )
 }
 
-function Cards() {
+function Cards({ answerMoreOne, setAllQuestions }) {
     deck.sort(comparador);
 
     function comparador() { 
         return Math.random() - 0.5; 
     }
 
+    setAllQuestions(deck.length);
+
     return(
         <div className="content">
             {deck.map((card, i) => (
                 <Asks
+                    answerMoreOne = {answerMoreOne}
                     key = {i}
                     index = {i + 1}
                     question = {card.question}
