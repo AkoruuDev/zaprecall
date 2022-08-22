@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const deck = [
     {
@@ -92,7 +92,9 @@ function Cards({ answerMoreOne, setAllQuestions }) {
         return Math.random() - 0.5; 
     }
 
-    setAllQuestions(deck.length);
+    useEffect(() => (
+        setAllQuestions(deck.length)
+    ), []);
 
     return(
         <div className="content">
