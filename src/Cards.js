@@ -47,6 +47,7 @@ function Asks(props) {
         setOpen(false);
         setResponse(false);
         props.answerMoreOne();
+        props.getIcons(ans);
     }
 
     return (
@@ -55,9 +56,9 @@ function Asks(props) {
                 <div className={`askNumber ${typeCardAnswered}`}>
                     <p>Pergunta {props.index}</p>
                     <span>{cardAnswered ? (
-                        typeCardAnswered === "not" ? <ion-icon name="close-circle"></ion-icon> : (
-                            typeCardAnswered === "almost" ? <ion-icon name="help-circle"></ion-icon> : (
-                                typeCardAnswered === "zap" ? <ion-icon name="checkmark-circle"></ion-icon> : ""
+                        typeCardAnswered === "close-circle" ? <ion-icon name="close-circle"></ion-icon> : (
+                            typeCardAnswered === "help-circle" ? <ion-icon name="help-circle"></ion-icon> : (
+                                typeCardAnswered === "checkmark-circle" ? <ion-icon name="checkmark-circle"></ion-icon> : ""
                     )   )   ) : <span onClick={() => setOpen(true)}><ion-icon name="play-outline"></ion-icon></span> }
                     </span>
                 </div> :
@@ -69,9 +70,9 @@ function Asks(props) {
                 <div className="askAnswere">
                     <p>{props.ans}</p>
                     <div className="boxButton">
-                        <div className="answereButton red" onClick={() => toAnswere("not")}>Não lembrei</div>
-                        <div className="answereButton yellow" onClick={() => toAnswere("almost")}>Quase não lembrei</div>
-                        <div className="answereButton green" onClick={() => toAnswere("zap")}>Zap</div>
+                        <div className="answereButton red" onClick={() => toAnswere("close-circle")}>Não lembrei</div>
+                        <div className="answereButton yellow" onClick={() => toAnswere("help-circle")}>Quase não lembrei</div>
+                        <div className="answereButton green" onClick={() => toAnswere("checkmark-circle")}>Zap</div>
                     </div>
                 </div>
             }
@@ -79,7 +80,7 @@ function Asks(props) {
     )
 }
 
-function Cards({ answerMoreOne, setAllQuestions }) {
+function Cards({ answerMoreOne, setAllQuestions, getIcons }) {
     const deck = [];
     
     for (let c = 0; c < 4; c++) {
@@ -104,6 +105,7 @@ function Cards({ answerMoreOne, setAllQuestions }) {
                     index = {i + 1}
                     question = {card.question}
                     ans = {card.answere}
+                    getIcons = {getIcons}
                 />
             ))}
         </div>

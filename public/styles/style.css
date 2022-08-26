@@ -173,24 +173,24 @@ ion-icon {
     background-color: var(--green);
 }
 
-.not {
+.close-circle {
     color: var(--red);
     text-decoration: line-through;
 }
 
-.almost {
+.help-circle {
     color: var(--yellow);
     text-decoration: line-through;
 }
 
-.zap {
+.checkmark-circle {
     color: var(--green);
     text-decoration: line-through;
 }
 
 .bottom {
     width: 100%;
-    height: 80px;
+    padding: 30px 0;
     background-color: var(--white);
 
     display: flex;
