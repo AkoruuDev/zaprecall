@@ -14,11 +14,10 @@ function Content() {
     }
 
     function getIcons(ans) {
-            setIcons([
-                ...icons,
-                ans
-            ])
-        console.log(icons);
+        setIcons([
+            ...icons,
+            ans
+        ])
     }
 
     return(
