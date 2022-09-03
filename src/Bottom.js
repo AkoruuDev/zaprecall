@@ -5,12 +5,13 @@ function Bottom({Answered, allQuestions, icons}) {
     const [messageGood, setMessageGood] = useState(true)
 
     useEffect(() => {
-        if(Answered === allQuestions && icons != 0) {
+        if(Answered === allQuestions && Number(icons) !== 0) {
             setMessage(true);
             icons.find(icon => {
                 if(icon === 'close-circle') {
                     setMessageGood(false);
                 }
+                return "";
             });
         }
     }, [Answered])
